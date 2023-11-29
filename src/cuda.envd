@@ -7,7 +7,7 @@ def base_cuda12(dev=True, compose=False):
   Args:
     dev: 是否为开发环境(default=True)，开发环境默认会安装git、vim等开发常用工具
   """
-  _cuda(version='12.2.2', dev)
+  _cuda(version='12.2.2', dev=dev)
   if True == compose:
     _compose_py_conda()
 
@@ -18,7 +18,7 @@ def base_cuda11(dev=True, compose=False):
   Args:
     dev: 是否为开发环境(default=True)，开发环境默认会安装git、vim等开发常用工具
   """
-  _cuda(version='11.8.0', dev)
+  _cuda(version='11.8.0', dev=dev)
   if True == compose:
     _compose_py_conda()
 
