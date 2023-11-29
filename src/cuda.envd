@@ -1,0 +1,13 @@
+# syntax=v1
+
+def base_cuda12(dev:bool=True):
+  if True==dev:
+    base(image="nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04", dev=dev)
+  else:
+    base(image="nvidia/cuda:12.2.2-cudnn8-runtime-ubuntu22.04", dev=dev)
+
+def base_cuda11(dev:bool=True):
+  if True==dev:
+    base(image="nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04", dev=dev)
+  else:
+    base(image="nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04", dev=dev)
