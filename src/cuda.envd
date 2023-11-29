@@ -1,6 +1,12 @@
 # syntax=v1
 
 def base_cuda12(dev=True):
+  """
+  配置cuda12 base, 操作系统：ubuntu 22.04
+
+  Args:
+    dev: 是否为开发环境(default=True)，开发环境默认会安装git、vim等开发常用工具
+  """
   if True==dev:
     base(image="nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04", dev=dev)
   else:

@@ -1,11 +1,12 @@
 def jupyter_lab(envd_port=80, host_port=0, token="hgfgood"):
-    """Configure Jupyter Lab.
+    """
+    配置 Jupyter Lab.
 
     Args:
         envd_port (Optional[int]): port used by envd container (default=80)
         host_port (Optional[int]): port used by host, if not specified or equals to 0,
             envd will randomly choose a free port
-        token (Optional[str]): access token
+        token (Optional[str]): access token(default=hgfgood)
     """
     install.python_packages(["jupyterlab"])
     runtime.expose(envd_port=envd_port, host_port=host_port, service="jupyter-lab")

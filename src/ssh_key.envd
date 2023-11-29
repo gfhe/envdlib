@@ -9,5 +9,9 @@ def add_pub_key(key):
 
 
 def add_default_key():
+  """
+  增加默认的mac key
+  在容器启动时，会将key 注入到 authorized_keys
+  """
   key='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNQpf4fIp/+vhkuR1fMMgzhpF7IWzPIqIPbcDx+QRglnmZJUqmFv9vXAoLd1sXsWjN2ofxDQ07Hh+EDSWqUZqNFuztzjN/7LXy7R97Yca5+nmj5Q2E4qoVCalU8IKy0Y8zfiB7JwlwE/IyA1eEOKiOyq9Cgl2wouyswXfXprHl9+X0nXkQYPhAmp1eIBHsZQ1LlSwDTF0jCqd+tJNI2UIqgja4oV6nuiAPq6kZp8GCSSk5UfQCgQcs9LPeIstHojDrLvnMmosdoLKgj0oJPc8gmVJFwBHQqTE4NFFfqKPnqcpHRTIU2uwQwlgG3d4dz45NNq00nxEfevVlp16Rcbtsi0Ns6ut73JgxzlCHL1T0h4oZBnpGgWzkHZF1FhHDOANqfOUN7L5tP+qqUC/SmfatDDZxQNwe71VRnc7bYQoFywvG6lEqVmbMghR9XNNu9/bSozqcEKm7Fp3bJj4Yk/MXFS0hzBcDf/XVUYUPb7bVl2P310uyCGMbL0YSBm/LVTc= h@mb'
   add_pub_key(key)
