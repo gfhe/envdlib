@@ -1,19 +1,31 @@
 # syntax=v1
 
-def base_cuda12(dev=True):
+def base_cuda12(dev=True, compose=False):
   """
-  配置cuda12 base, 操作系统：ubuntu 22.04
+  配置cuda12 base, 操作系统：ubuntu 22.04, cuda 12.2.2
 
   Args:
     dev: 是否为开发环境(default=True)，开发环境默认会安装git、vim等开发常用工具
   """
-  if True==dev:
-    base(image="nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04", dev=dev)
-  else:
-    base(image="nvidia/cuda:12.2.2-cudnn8-runtime-ubuntu22.04", dev=dev)
+  _cuda(version='12.2.2', dev)
+  if True == compose:
+    _compose_py_conda()
 
-def base_cuda11(dev=True):
-  if True==dev:
-    base(image="nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04", dev=dev)
-  else:
-    base(image="nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04", dev=dev)
+def base_cuda11(dev=True, compose=False):
+  """
+  配置cuda11 base, 操作系统：ubuntu 22.04, cuda 11.8.0
+
+  Args:
+    dev: 是否为开发环境(default=True)，开发环境默认会安装git、vim等开发常用工具
+  """
+  _cuda(version='11.8.0', dev)
+  if True == compose:
+    _compose_py_conda()
+
+def _cuda(version="12.2.2", dev=True):
+  env = "devel" if dev else "runtime" 
+  base(image="nvidia/cuda:{}-cudnn8-{}-ubuntu22.04".format(version, env), dev=dev)
+
+def _compose_py_conda(py="3.10"):
+  install.python(version="3.10")
+  install.conda()
