@@ -1,10 +1,10 @@
 # syntax=v1
 
-def add_pub_key_file(key_file: str):
+def add_pub_key_file(key_file):
   io.copy(source=key_file, target='/tmp/keys')
   runtime.init(commands=["cat /tmp/keys >> /var/envd/authorized_keys"])
 
-def add_pub_key(key: str):
+def add_pub_key(key):
   runtime.init(commands=["echo -n '{}' >> /var/envd/authorized_keys".format(key)])
 
 
