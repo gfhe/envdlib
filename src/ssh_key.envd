@@ -7,7 +7,6 @@ def add_pub_key_file(key_file):
 def add_pub_key(key):
   runtime.init(commands=["echo -n '{}' >> /var/envd/authorized_keys".format(key)])
 
-
 def add_default_key():
   """
   增加默认的mac key
