@@ -22,6 +22,12 @@ def base_cuda11(dev=True, compose=False):
   if True == compose:
     _compose_py_conda()
 
+def nvitop():
+  """
+  nvitop 监控工具
+  """
+  install.python_packages(name = ["nvitop"])
+
 def _cuda(version="12.2.2", dev=True):
   env = "devel" if dev else "runtime" 
   base(image="nvidia/cuda:{}-cudnn8-{}-ubuntu22.04".format(version, env), dev=dev)
@@ -29,3 +35,4 @@ def _cuda(version="12.2.2", dev=True):
 def _compose_py_conda(py="3.10"):
   install.python(version="3.10")
   install.conda()
+  nvitop()
