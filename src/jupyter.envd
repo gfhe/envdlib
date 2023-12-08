@@ -26,7 +26,7 @@ def jupyter_lab(envd_port=80, host_port=0, token="hgfgood"):
         ]
     )
 
-def jupyter_packages(names=List[str]):
+def jupyter_packages(name):
     """
     安装jupyter plugin packages
     """
