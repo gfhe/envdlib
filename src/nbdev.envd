@@ -1,0 +1,8 @@
+def nbdev():
+    """构建nbdev 环境"""
+    install.python_packages(name = [
+        "nbdev", 
+        "jupyterlab-quarto",
+        ])
+    # 安装Quarto
+    run(commands=["nbdev_install_quarto"])

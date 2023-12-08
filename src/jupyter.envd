@@ -21,9 +21,13 @@ def jupyter_lab(envd_port=80, host_port=0, token="hgfgood"):
                 str(envd_port),
                 "-y",
                 "--ServerApp.token",
-                token,
-                "--ServerApp.pylab",
-                "enable"
+                token
             ]
         ]
     )
+
+def jupyter_packages(names=List[str]):
+    """
+    安装jupyter plugin packages
+    """
+    pass
