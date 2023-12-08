@@ -13,3 +13,10 @@ def build():
 > 例如:
 > ✅：`lib.base_cuda12()`
 > ❌：`lib.cuda.base_cuda12()`
+
+
+## 用户配置
+
+用户配置不需要打包到镜像中。
+将配置放到`~/.config/envd/config.envd`路径，envd 会自动的加载和启用。
+[配置文件](./config.envd)
