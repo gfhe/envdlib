@@ -6,7 +6,7 @@ def add_pub_key_file(key):
 
 def add_pub_key(key):
   runtime.init(commands=[
-    "echo >> /var/envd/authorized_keys"
+    "echo >> /var/envd/authorized_keys",
     "echo {} >> /var/envd/authorized_keys".format(key)
   ])
 
