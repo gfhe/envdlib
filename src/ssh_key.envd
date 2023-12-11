@@ -5,7 +5,16 @@ def add_pub_key_file(key):
   runtime.init(commands=["cat /tmp/keys >> /var/envd/authorized_keys"])
 
 def add_pub_key(key):
-  runtime.init(commands=["echo -e '\n{}' >> /var/envd/authorized_keys".format(key)])
+  runtime.init(commands=[
+    "echo >> /var/envd/authorized_keys"
+    "echo {} >> /var/envd/authorized_keys".format(key)
+  ])
+
+def add_pub_keys(keys):
+  cmd=["echo >> /var/envd/authorized_keys"]
+  for key in keys:
+    cmd.append("echo {} >> /var/envd/authorized_keys".format(key))
+  runtime.init(commands=cmd)
 
 def add_default_key():
   """
@@ -14,5 +23,4 @@ def add_default_key():
   """
   key1='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNQpf4fIp/+vhkuR1fMMgzhpF7IWzPIqIPbcDx+QRglnmZJUqmFv9vXAoLd1sXsWjN2ofxDQ07Hh+EDSWqUZqNFuztzjN/7LXy7R97Yca5+nmj5Q2E4qoVCalU8IKy0Y8zfiB7JwlwE/IyA1eEOKiOyq9Cgl2wouyswXfXprHl9+X0nXkQYPhAmp1eIBHsZQ1LlSwDTF0jCqd+tJNI2UIqgja4oV6nuiAPq6kZp8GCSSk5UfQCgQcs9LPeIstHojDrLvnMmosdoLKgj0oJPc8gmVJFwBHQqTE4NFFfqKPnqcpHRTIU2uwQwlgG3d4dz45NNq00nxEfevVlp16Rcbtsi0Ns6ut73JgxzlCHL1T0h4oZBnpGgWzkHZF1FhHDOANqfOUN7L5tP+qqUC/SmfatDDZxQNwe71VRnc7bYQoFywvG6lEqVmbMghR9XNNu9/bSozqcEKm7Fp3bJj4Yk/MXFS0hzBcDf/XVUYUPb7bVl2P310uyCGMbL0YSBm/LVTc= h@mb'
   key2='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDNQpf4fIp/+vhkuR1fMMgzhpF7IWzPIqIPbcDx+QRglnmZJUqmFv9vXAoLd1sXsWjN2ofxDQ07Hh+EDSWqUZqNFuztzjN/7LXy7R97Yca5+nmj5Q2E4qoVCalU8IKy0Y8zfiB7JwlwE/IyA1eEOKiOyq9Cgl2wouyswXfXprHl9+X0nXkQYPhAmp1eIBHsZQ1LlSwDTF0jCqd+tJNI2UIqgja4oV6nuiAPq6kZp8GCSSk5UfQCgQcs9LPeIstHojDrLvnMmosdoLKgj0oJPc8gmVJFwBHQqTE4NFFfqKPnqcpHRTIU2uwQwlgG3d4dz45NNq00nxEfevVlp16Rcbtsi0Ns6ut73JgxzlCHL1T0h4oZBnpGgWzkHZF1FhHDOANqfOUN7L5tP+qqUC/SmfatDDZxQNwe71VRnc7bYQoFywvG6lEqVmbMghR9XNNu9/bSozqcEKm7Fp3bJj4Yk/MXFS0hzBcDf/XVUYUPb7bVl2P310uyCGMbL0YSBm/LVTc= h@mac'
-  add_pub_key(key1)
-  add_pub_key(key2)
+  add_pub_keys([key1, key2])
