@@ -21,7 +21,8 @@ def jupyter_lab(envd_port=80, host_port=0, token="hgfgood"):
                 str(envd_port),
                 "-y",
                 "--ServerApp.token",
-                token
+                token,
+                "--allow-root"
             ]
         ]
     )
