@@ -1,6 +1,6 @@
 # syntax=v1
 
-def base_cuda12(dev=True, compose=False):
+def base_cuda12(dev=True, py="3.10", compose=False):
   """
   配置cuda12 base, 操作系统：ubuntu 22.04, cuda 12.2.2
 
@@ -9,9 +9,9 @@ def base_cuda12(dev=True, compose=False):
   """
   _cuda(version='12.2.2', dev=dev)
   if True == compose:
-    _compose_py_conda()
+    _compose_py_conda(py=py)
 
-def base_cuda11(dev=True, compose=False):
+def base_cuda11(dev=True, py="3.10", compose=False):
   """
   配置cuda11 base, 操作系统：ubuntu 22.04, cuda 11.8.0
 
@@ -20,7 +20,7 @@ def base_cuda11(dev=True, compose=False):
   """
   _cuda(version='11.8.0', dev=dev)
   if True == compose:
-    _compose_py_conda()
+    _compose_py_conda(py=py)
 
 def nvitop():
   """
@@ -35,6 +35,6 @@ def _cuda(version="12.2.2", dev=True):
   base(image="nvidia/cuda:{}-cudnn8-{}-ubuntu22.04".format(version, env), dev=dev)
 
 def _compose_py_conda(py="3.10"):
-  install.python(version="3.10")
+  install.python(version=py)
   install.conda()
   nvitop()
