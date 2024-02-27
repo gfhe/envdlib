@@ -1,4 +1,8 @@
 # syntax=v1
+#
+def cuda(cuda_version="11.8.0", dev=True, cuda_dev=False):
+  _cuda(version='12.2.2', dev=dev, cuda_dev=cuda_dev)
+  nvitop()
 
 def base_cuda12(dev=True, py="3.10", compose=False):
   """
@@ -28,10 +32,9 @@ def nvitop():
   """
   install.python_packages(name = ["nvitop"])
 
-def _cuda(version="12.2.2", dev=True):
-  # env = "devel" if dev else "runtime" 
+def _cuda(version="12.2.2", dev=True, cuda_dev=False):
+  env = "devel" if cuda_dev else "runtime" 
   # 不需要编译nvidia cuda 相关的东西，例如nvcc，仅需要runtime环境的就可以了
-  env = "runtime"
   base(image="nvidia/cuda:{}-cudnn8-{}-ubuntu22.04".format(version, env), dev=dev)
 
 def _compose_py_conda(py="3.10"):
