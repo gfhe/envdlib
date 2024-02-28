@@ -1,4 +1,4 @@
-def torch(version, dev=True,  cuda_version="118"):
+def torch(version="2.2.0", dev=True,  cuda_version="118"):
     """
     设置 torch 镜像
     """
