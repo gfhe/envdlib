@@ -6,7 +6,7 @@ def torch(version="latest", dev=True,  cuda_version="118"):
     """
     version_str = "" if version =="latest" else "%s_" % version
     env_str = "dev" if dev else "runtime"
-    torch_image="hgfkeep/torch:%s%s_%s" % (version_str, cuda_version, env_str)
+    torch_image="hgfkeep/torch:%scu%s_%s" % (version_str, cuda_version, env_str)
     base(image=torch_image, dev=dev)
 
 
