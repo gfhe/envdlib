@@ -1,0 +1,7 @@
+def torch(version, dev=True,  cuda_version="118"):
+    """
+    设置 torch 镜像
+    """
+    env_str = "dev" if dev else "runtime"
+    torch_image="hgfkeep/torch:%s_%s" %s(cuda_version, env_str)
+    base(image="torch_image", dev=dev)
