@@ -26,10 +26,13 @@ def install_torch(version="latest", py_version="3.11", dev=True, cuda_version='1
     v_str = ""
     if version == None or version == "latest":
         torch_latest(cuda_version)
+    elif version =="2.2.2":
+        torch_2_2_2(cuda_version)
     elif version =="2.1.2":
         torch_2_1_2(cuda_version)
     else:
         print("not supported torch verison:%s" % version)
+    print("installed torch")
 
 def torch_latest(cuda_version='118'):
     cmd="pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu%s" % cuda_version
