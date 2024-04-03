@@ -17,9 +17,9 @@ def install_torch(version="latest", py_version="3.11", dev=True, cuda_version='1
         install.apt_packages(name=["git", "build-essential"])
     
     cuda_env = "devel" if cuda_dev else "runtime" 
-    cuda_version = "11.8.0" if version == "118" else "12.1.0"
+    cuda_version_full = "11.8.0" if cuda_version == "118" else "12.1.0"
     # 不需要编译nvidia cuda 相关的东西，例如nvcc，仅需要runtime环境的就可以了
-    base(image="nvidia/cuda:{}-cudnn8-{}-ubuntu22.04".format(cuda_version, cuda_env), dev=dev)
+    base(image="nvidia/cuda:{}-cudnn8-{}-ubuntu22.04".format(cuda_version_full, cuda_env), dev=dev)
     # 安装监控工具
     install.python_packages(name = ["nvitop"])
 
@@ -32,10 +32,10 @@ def install_torch(version="latest", py_version="3.11", dev=True, cuda_version='1
         torch_2_1_2(cuda_version)
     else:
         print("not supported torch verison:%s" % version)
-    print("installed torch")
+
 
 def torch_latest(cuda_version='118'):
-    cmd="pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu%s" % cuda_version
+    cmd='pip3 install torch torchvision torchaudio'
     run(commands=[cmd])
 
 
@@ -46,6 +46,3 @@ def torch_2_1_2(cuda_version='118'):
 def torch_2_2_2(cuda_version='118'):
     cmd="pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 --index-url https://download.pytorch.org/whl/cu%s" % cuda_version
     run(commands=[cmd])
-
-def build():
-    torch(version="2.1.2", dev=True, cuda_version="118")
