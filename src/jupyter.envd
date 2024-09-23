@@ -1,8 +1,9 @@
-def jupyter_lab(host_port=0, token="hgfgood"):
+def jupyter_lab(envd_port=80, host_port=0, token="hgfgood"):
     """
     配置 Jupyter Lab.
 
     Args:
+        envd_port (Optional[int]): envd port
         host_port (Optional[int]): port used by host, if not specified or equals to 0,
             envd will randomly choose a free port
         token (Optional[str]): access token(default=hgfgood)
@@ -17,7 +18,7 @@ def jupyter_lab(host_port=0, token="hgfgood"):
                 "--ip",
                 "0.0.0.0",
                 "--port",
-                str(host_port),
+                str(envd_port),
                 "-y",
                 "--ServerApp.token",
                 token,
