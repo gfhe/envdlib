@@ -1,4 +1,4 @@
-def jupyter_lab(envd_port=80, host_port=0, token="hgfgood", notebook_dir="."):
+def jupyter_lab(envd_port=80, host_port=0, token="hgfgood", notebook_dir="~/"):
     """
     配置 Jupyter Lab.
 
