@@ -8,7 +8,7 @@ def jupyter_lab(envd_port=80, host_port=0, token="hgfgood", notebook_dir="~/"):
             envd will randomly choose a free port
         token (Optional[str]): access token(default=hgfgood)
     """
-    install.python_packages(["jupyterlab"])
+    install.python_packages(["jupyterlab", "ipywidgets"])
     runtime.expose(envd_port=envd_port, host_port=host_port, service="jupyter-lab")
     runtime.daemon(
         commands=[
